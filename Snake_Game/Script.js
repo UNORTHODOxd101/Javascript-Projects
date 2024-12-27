@@ -2,7 +2,8 @@
 const board = document.getElementById('game-board');
 const instructionText = document.getElementById('instruction-text');
 const logo = document.getElementById('logo');
-const score = document.getElementById('score');
+const score = document.getElementById('Score');
+const highScoreText = document.getElementById('highScore');
 
 //Define game variables
 const gridSize = 20;
@@ -135,7 +136,7 @@ function handleKeyPress(event) {
 document.addEventListener('keydown', handleKeyPress);
 
 function increaseSpeed() {
-    console.log(gameSpeedDelay);
+   // console.log(gameSpeedDelay);
     if (gameSpeedDelay > 150) {
         gameSpeedDelay -= 5;
     } else if (gameSpeedDelay > 100) {
@@ -155,7 +156,7 @@ function checkCollision() {
     } 
 
     for (let i = 1; i < snake.length; i++) {
-        if (head.x == snake[i].x && head.y === snake[i].y) {
+        if (head.x === snake[i].x && head.y === snake[i].y) {
             resetGame();
         }
     }
@@ -172,7 +173,7 @@ function resetGame () {
 }
 
 function updateScore() {
-    const countScore = snake.length -1;
+    const currentScore = snake.length -1;
     score.textContent = currentScore.toString().padStart(3, '0');
 }
 
